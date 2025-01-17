@@ -1,0 +1,79 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include "keys_se.h"
+
+/ {
+  combos {
+    compatible = "zmk,combos";
+    combo_layer_three {
+      timeout-ms = <50>;
+      key-positions = <31 34>;
+      bindings = <&mo 0>;
+    };
+  };
+  behaviors {
+    hm: homerow_mods {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HOMEROW_MODS";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick_tap_ms = <0>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&kp>;
+    };
+    td: tapdance {
+      compatible = "zmk,behavior-hold-tap";
+      label = "TAPDANCE";
+      #binding-cells = <2>;
+      tapping-term-ms = <150>;
+      quick_tap_ms = <0>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&kp>;
+    };
+    los: layer_one_shot {
+      compatible = "zmk,behavior-hold-tap";
+      label = "LAYER_ONE_SHOT";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick_tap_ms = <0>;
+      flavor = "tap-preferred";
+      bindings = <&mo>, <&sl>;
+    };
+    lt: layer_tap {
+      compatible = "zmk,behavior-hold-tap";
+      label = "LAYER_TAP";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick_tap_ms = <0>;
+      flavor = "tap-preferred";
+      bindings = <&mo>, <&kp>;
+    };
+  };
+
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        qwerty_layer {
+            display-name = "QWERTY";
+            bindings = <
+                &kp TAB      &kp Q    &kp W    &kp E    &kp R       &kp T         &kp MINUS                &kp EQUAL &kp Y         &kp U     &kp I     &kp O    &kp P     &kp SE_ARNG
+                &kp BSPC     &kp A    &kp S    &kp D    &kp F       &kp G         &kp LBKT                 &kp RBKT  &kp H         &kp J     &kp K     &kp L    &kp SE_ODIA  &kp SE_ADIA
+                &kp LSHFT    &kp Z    &kp X    &kp C    &kp V       &kp B         &none                    &kp SPACE &kp N         &kp M     &kp COMMA &kp DOT  &kp SLASH &kp ENTER
+                &kp LCTRL    &kp LGUI &kp LALT &kp LGUI &kp TAB     &kp SPACE     &none                    &none     &kp BSPC      &kp ESC   &kp RGUI &kp RALT &kp RGUI  &kp ENTER
+            >;
+        };
+
+        // qwerty_hr_layer {
+        //     display-name = "QWERTY-HRM";
+        //
+        //     bindings = <
+        //         &kp TAB      &kp Q      &kp W      &kp E       &kp R       &kp T         &kp MINUS                &kp EQUAL &kp Y         &kp U       &kp I       &kp O      &kp P         &kp BSPC
+        //         &lt MAX BSPC &hl LALT A &hl RALT S &hl LSHFT D &hl LCTRL F &hl LGUI G    &kp LBKT                 &kp RBKT  &hr RGUI H    &hr RCTRL J &hr RSHFT K &hr RALT L &hr LALT SEMI &kp APOS
+        //         &kp LSHFT    &kp Z      &kp X      &kp C       &kp V       &kp B         &mup LC(SPACE) LC(LS(M)) &kp SPACE &kp N         &kp M       &kp COMMA   &kp DOT    &kp SLASH     &mt RSHFT ENTER
+        //         &kp LCTRL    &kp LGUI   &kp LALT   &mo ADJ     &lt LOW TAB &lt MSE SPACE &none                    &none     &lt NSP SPACE &mo RSE     &mo FUN     &kp RALT   &kp RGUI      &mt RCTRL ENTER
+        //     >;
+        // };
+    };
+};
